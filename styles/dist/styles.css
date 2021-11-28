@@ -679,6 +679,10 @@ html {
 }
 
 .login .content form {
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -897,7 +901,7 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 60px 150px;
+  padding: 60px 15%;
   margin: auto;
 }
 
