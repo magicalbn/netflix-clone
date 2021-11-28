@@ -9,7 +9,7 @@ const FAQ: React.FC = () => {
             {
                 faqData.map(each => {
                     return (
-                        <div className='faq-row'>
+                        <div key={each.question} className='faq-row'>
                             <button>{each.question} <IoIosAdd  /></button>
                             <p>{each.answer}</p>
                         </div>

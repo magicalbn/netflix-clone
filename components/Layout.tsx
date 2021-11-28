@@ -35,12 +35,12 @@ const Layout: React.FC<any> = (props) => {
 
                 if(router.pathname=='/')
                 router.replace('/browse')
-                console.log(uid)
+                
                 // ...
             } else {
                 // User is signed out
                 // ...
-                console.log('no user')
+                
                 if(router.pathname!='/')
                     router.replace('/')
                 

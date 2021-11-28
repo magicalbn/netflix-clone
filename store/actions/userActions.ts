@@ -45,7 +45,7 @@ const loginwithEmail = async (email, password, dispatch) => {
             // Signed in 
             const user = userCredential.user;
             // ...
-            console.log(user)
+           
 
             return user
         })
@@ -64,14 +64,14 @@ const signupwithEmail = async (email, password, dispatch) => {
             // Signed in 
             const user: any = userCredential.user;
             // ...
-            console.log(user)
+            
             addDoc(collection(db, "netflixUsers"), {
                 email: user.email,
                 user: user.uid,
                 subscriptionPlan: 1
 
             }).then((docRef: any) => {
-                console.log("Document written with ID: ", docRef.id);
+                //console.log("Document written with ID: ", docRef.id);
             });
 
            
@@ -114,7 +114,7 @@ export const userLogOut = () => {
 
         signOut(auth).then(() => {
             dispatch(AuthorizationLogOut())
-            console.log('logging out')
+            
         }).catch((error) => {
             // An error happened.
             dispatch(AuthorizationFailed(error))
