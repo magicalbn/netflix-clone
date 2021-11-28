@@ -44,9 +44,9 @@ const Rows: React.FC<RowsChild> = (props) => {
                         {
                             moviesList?.map(each => {
 
-
+                                
                                 return (
-                                    <img key={each.id} src={imageURL + (props.large ? each.poster_path : each.backdrop_path)}></img>
+                                    (each.poster_path && each.backdrop_path) ?<img key={each.id} src={imageURL + (props.large ? each.poster_path : each.backdrop_path)}></img>:null
                                 )
                             })
                         }
