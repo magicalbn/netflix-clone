@@ -1,0 +1,820 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #141414;
+  color: white;
+}
+
+.container {
+  margin: auto;
+  width: 90%;
+}
+
+html {
+  --back-color:hsl(0, 0%, 98%);
+  --text-color: #131112;
+  --element-color: #004459;
+  --light-element-color: #699190;
+  --input-color:hsl(0, 0%, 52%);
+  --border-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  --extra-panel: #fd7f09;
+  --error-color: rgb(243, 70, 51);
+  --success-color:rgb(26, 107, 1);
+  --stocks-green:#44AE68;
+  --accent-color:#7d62d4;
+  --accent-color-secondary:#e24da2;
+}
+
+.Navbar {
+  z-index: 500;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 9vh;
+  background-color: transparent;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.Navbar.dark {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(#141414));
+  background-image: linear-gradient(black, #141414);
+}
+
+.Navbar .Content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Navbar .Content .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Navbar .Content .left .logo {
+  width: 120px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-right: 20px;
+}
+
+.Navbar .Content .left .menu_items ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.Navbar .Content .left .menu_items ul p {
+  text-decoration: none;
+  color: #aca9a9;
+  font-weight: 500;
+  margin: 0 10px;
+  font-size: 14px;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.Navbar .Content .left .menu_items ul p:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.Navbar .Content .left .menu_items ul p.active {
+  color: white;
+}
+
+.Navbar .Content .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.Navbar .Content .right .notifications {
+  margin-right: 30px;
+  position: relative;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.Navbar .Content .right .notifications:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+.Navbar .Content .right .notifications p {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  color: white;
+  background-color: red;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.Navbar .Content .right .notifications .bell {
+  width: 30px;
+  height: 30px;
+}
+
+.Navbar .Content .right .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-right: 10px;
+}
+
+.Navbar .Content .right .accounts_hover:hover {
+  cursor: pointer;
+}
+
+.Navbar .Content .right .accounts_hover:hover .arrow {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.Navbar .Content .right .accounts_hover:hover .drop_menu {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.Navbar .Content .right .arrow {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  height: 20px;
+  width: 20px;
+}
+
+.Navbar .Content .right svg {
+  fill: white;
+}
+
+.Navbar .Content .right .drop_menu {
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+  pointer-events: all;
+  background-color: rgba(0, 0, 0, 0.836);
+  position: absolute;
+  top: 8vh;
+  right: 0;
+  width: 180px;
+  padding: 20px 10px;
+  border-radius: 3px;
+}
+
+.Navbar .Content .right .drop_menu p {
+  font-size: 13px;
+}
+
+.Navbar .Content .right .drop_menu .top {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.Navbar .Content .right .drop_menu .top .account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+}
+
+.Navbar .Content .right .drop_menu .top .account:hover {
+  cursor: pointer;
+}
+
+.Navbar .Content .right .drop_menu .top .account:hover p {
+  text-decoration: underline;
+}
+
+.Navbar .Content .right .drop_menu .top::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.5px;
+  background-color: gray;
+}
+
+.Navbar .Content .right .drop_menu .bottom {
+  margin-top: 10px;
+}
+
+.Navbar .Content .right .drop_menu .bottom p {
+  padding: 5px 10px;
+}
+
+.Navbar .Content .right .drop_menu .bottom p:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.Navbar .Content .right .drop_menu img {
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  margin-right: 15px;
+}
+
+@-webkit-keyframes delay-pointer-events {
+  0% {
+    pointer-events: all;
+  }
+  50% {
+    pointer-events: all;
+  }
+  100% {
+    pointer-events: none;
+  }
+}
+
+@keyframes delay-pointer-events {
+  0% {
+    pointer-events: all;
+  }
+  50% {
+    pointer-events: all;
+  }
+  100% {
+    pointer-events: none;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .menu_items {
+    display: none;
+  }
+}
+
+.browse .banner {
+  position: relative;
+}
+
+.browse .banner::before {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 12vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(transparent));
+  background-image: linear-gradient(black, transparent);
+}
+
+.browse .banner::after {
+  position: absolute;
+  z-index: 21;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 30vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#141414));
+  background-image: linear-gradient(transparent, #141414);
+}
+
+.browse .banner img {
+  z-index: -5;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.browse .banner .information {
+  color: white;
+  text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
+  position: absolute;
+  top: 40%;
+  left: 5%;
+}
+
+.browse .banner .information h1 {
+  font-size: 5rem;
+  font-weight: bolder;
+  margin-bottom: 15px;
+}
+
+.browse .banner .information h3 {
+  width: 50%;
+}
+
+.browse .banner .information .btn_grp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 25px;
+}
+
+.browse .banner .information .btn_grp button {
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 14px 20px;
+}
+
+.browse .banner .information .btn_grp button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.browse .banner .information .btn_grp button:not(:last-child) {
+  margin-right: 20px;
+}
+
+.browse .banner .information .btn_grp button svg {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.browse .banner .information .btn_grp button.more {
+  background-color: rgba(128, 128, 128, 0.685);
+  color: white;
+}
+
+.browse .content {
+  position: relative;
+  z-index: 100;
+  margin-top: -15vh;
+}
+
+@media screen and (max-width: 1000px) {
+  .browse .banner .information {
+    top: 40%;
+    left: 5%;
+  }
+  .browse .banner .information h1 {
+    font-size: 2rem;
+  }
+  .browse .banner .information h3 {
+    font-size: 1rem;
+  }
+  .browse .banner .information .btn_grp button {
+    font-size: 15px;
+  }
+  .browse .content {
+    margin-top: -5vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .browse .banner::after {
+    height: 40px;
+  }
+  .browse .banner .information {
+    top: 40%;
+    left: 5%;
+  }
+  .browse .banner .information h1 {
+    font-size: 2rem;
+  }
+  .browse .banner .information h3 {
+    display: none;
+    font-size: 1rem;
+  }
+  .browse .banner .information .btn_grp button {
+    font-size: 10px;
+    height: 30px;
+    padding: 10px;
+  }
+  .browse .banner .information .btn_grp button svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  .browse .content {
+    margin-top: -2vh;
+  }
+}
+
+.row h2 {
+  margin-left: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.row h2:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+
+.row h2 svg {
+  height: 15px;
+  width: 15px;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.row .row_posters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.row .row_posters::-webkit-scrollbar {
+  display: none;
+}
+
+.row .row_posters img {
+  display: block;
+  max-height: 100px;
+  border-radius: 2px;
+  margin: 5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.row .row_posters img:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transform-origin: 50 50;
+          transform-origin: 50 50;
+}
+
+.row .row_posters.poster {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.row .row_posters.poster img {
+  max-height: 200px;
+}
+
+.row .row_posters.poster .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 15px;
+}
+
+.row .row_posters.poster .card p {
+  font-size: 200px;
+  color: black;
+  font-weight: bold;
+  margin-right: -40px;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #5a5959;
+}
+
+.row .row_posters.poster .card img {
+  max-height: 180px;
+}
+
+.login {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.login::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(transparent));
+  background-image: linear-gradient(black, transparent);
+  z-index: 30;
+}
+
+.login::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
+  background-image: linear-gradient(transparent, black);
+  z-index: 30;
+}
+
+.login .background {
+  z-index: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.login .head {
+  position: relative;
+  z-index: 50;
+  width: 95%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login .head .logo {
+  width: 180px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.login .head .sign_in {
+  cursor: pointer;
+  padding: 5px 12px;
+  font-size: 15px;
+  border: none;
+  border-radius: 2px;
+  background-color: #e50914;
+  color: white;
+}
+
+.login .content {
+  position: absolute;
+  z-index: 50;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.login .content h1 {
+  font-size: 60px;
+}
+
+.login .content h1 + h3 {
+  font-weight: bold;
+}
+
+.login .content h3 {
+  font-weight: normal;
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.login .content form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.login .content form input {
+  height: 60px;
+  width: 400px;
+  padding-left: 20px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+}
+
+.login .content form button {
+  cursor: pointer;
+  height: 60px;
+  width: 200px;
+  border: none;
+  background-color: #e50914;
+  color: white;
+  opacity: 0.9;
+  font-size: 25px;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.login .content form button:hover {
+  opacity: 1;
+}
+
+.login .login-model {
+  position: absolute;
+  z-index: 50;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 60px;
+  border-radius: 3px;
+}
+
+.login .login-model h1 {
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.login .login-model h1 p {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 15px;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.login .login-model form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login .login-model form .email,
+.login .login-model form .password {
+  font-weight: 500;
+  width: 300px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #333;
+  color: #fff;
+  padding-left: 20px;
+}
+
+.login .login-model form .error {
+  color: #e87c03;
+  font-size: 13px;
+}
+
+.login .login-model form button {
+  width: 300px;
+  background-color: #e50914;
+  margin-top: 30px;
+  border: none;
+  border-radius: 3px;
+  padding: 13px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login .login-model form .lower {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 10px;
+  color: #b3b3b3;
+}
+
+.login .login-model form .lower .checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login .login-model form .lower .checkbox input {
+  background-color: #b3b3b3;
+  margin-right: 5px;
+}
+
+.login .login-model .new {
+  margin-top: 30px;
+  color: #b3b3b3;
+}
+
+.login .login-model .new span {
+  color: white;
+  cursor: pointer;
+}
+
+.login .login-model .new span:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 950px) {
+  .login .content h1 {
+    font-size: 40px;
+  }
+  .login .content h3 {
+    font-size: 18px;
+  }
+  .login .content form input {
+    width: 300px;
+    height: 50px;
+  }
+  .login .content form button {
+    cursor: pointer;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .login .content h1 {
+    font-size: 35px;
+  }
+  .login .content h3 {
+    font-size: 15px;
+  }
+  .login .content form input {
+    width: 200px;
+    height: 40px;
+  }
+  .login .content form button {
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    font-size: 15px;
+  }
+  .login .login-model {
+    padding: 40px;
+  }
+  .login .login-model form .email,
+  .login .login-model form .password {
+    width: 250px;
+  }
+  .login .login-model form button {
+    width: 250px;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
