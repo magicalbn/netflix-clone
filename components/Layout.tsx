@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import {  onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase';
+import Footer from './Navbar/Footer'
 
 //redux
 import { connect } from 'react-redux'
@@ -64,7 +65,7 @@ const Layout: React.FC<any> = (props) => {
             </Head>
             {props.home ? null : <Navbar />}
             {props.children}
-
+            <Footer/>
 
         </>
     )
