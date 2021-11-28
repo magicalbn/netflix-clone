@@ -984,4 +984,131 @@ html {
     font-size: 20px;
   }
 }
+
+.faq {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  padding: 65px 15%;
+}
+
+.faq h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 40px;
+}
+
+.faq::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: var(--netflix-black);
+}
+
+.faq .faq-row {
+  margin: auto;
+  margin-top: 10px;
+  max-width: 700px;
+}
+
+.faq .faq-row button {
+  background-color: var(--netflix-black);
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  padding: 20px;
+  font-size: 25px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  outline: none;
+}
+
+.faq .faq-row button svg {
+  color: white;
+  height: 40px;
+  width: 40px;
+  -webkit-transition: -webkit-transform 0.1s ease-in-out;
+  transition: -webkit-transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out, -webkit-transform 0.1s ease-in-out;
+}
+
+.faq .faq-row button:focus svg {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.faq .faq-row button:focus + p {
+  height: auto;
+  padding: 20px;
+}
+
+.faq .faq-row p {
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  height: 0px;
+  overflow: hidden;
+  padding: 0px 20px;
+  margin-top: 1px;
+  font-size: 18px;
+  background-color: var(--netflix-black);
+  white-space: pre-line;
+}
+
+@media screen and (max-width: 900px) {
+  .faq {
+    padding: 65px 40px;
+  }
+  .faq h1 {
+    font-size: 35px;
+  }
+  .faq .faq-row {
+    max-width: 1000px;
+  }
+  .faq .faq-row button {
+    font-size: 18px;
+  }
+  .faq .faq-row button svg {
+    height: 30px;
+    width: 30px;
+  }
+  .faq .faq-row p {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .faq {
+    padding: 65px 10px;
+  }
+  .faq h1 {
+    font-size: 35px;
+  }
+  .faq .faq-row {
+    max-width: 1000px;
+  }
+  .faq .faq-row button {
+    font-size: 18px;
+    padding: 15px 20px;
+  }
+  .faq .faq-row button svg {
+    height: 30px;
+    width: 30px;
+  }
+  .faq .faq-row p {
+    font-size: 15px;
+  }
+}
 /*# sourceMappingURL=styles.css.map */

@@ -7,8 +7,9 @@ import panelData from '../data/panelData.json'
 //redux
 import { connect } from 'react-redux'
 import { UserActionList, ReducerStoreState, } from '@/store/actions'
-import Panel from "@/components/Rows/Panel"
 
+import Panel from "@/components/Rows/Panel"
+import FAQ from '@/components/FAQ'
 interface AppProps {
     initializeAuth: (email: string, password: string, login: boolean) => {},
 
@@ -56,6 +57,7 @@ const Home: React.FC<AppProps> = (props) => {
     )
 
     const panelViews = (
+        <>
         <div className="panel-collection">
             {
                 panelData.map((each, index) => {
@@ -64,6 +66,8 @@ const Home: React.FC<AppProps> = (props) => {
             }
 
         </div>
+        <FAQ/>
+        </>
     )
 
     const loginModel = (
