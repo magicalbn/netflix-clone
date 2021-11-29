@@ -16,6 +16,13 @@ body {
   width: 90%;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
 html {
   --back-color:hsl(0, 0%, 98%);
   --text-color: #131112;
@@ -463,7 +470,7 @@ html {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 570px) {
   .browse .banner::after {
     height: 40px;
   }
@@ -491,6 +498,10 @@ html {
   .browse .content {
     margin-top: -2vh;
   }
+}
+
+.row {
+  position: relative;
 }
 
 .row h2 {
@@ -521,6 +532,7 @@ html {
 }
 
 .row .row_posters {
+  scroll-behavior: smooth;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -569,6 +581,7 @@ html {
 }
 
 .row .row_posters.poster .card p {
+  pointer-events: none;
   font-size: 200px;
   color: black;
   font-weight: bold;
@@ -580,6 +593,49 @@ html {
 
 .row .row_posters.poster .card img {
   max-height: 180px;
+}
+
+.row .paddles {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.row .paddles:hover {
+  opacity: 1;
+}
+
+.row .paddles .paddle {
+  margin-top: 15px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.658);
+  outline: none;
+  border: none;
+  height: 70%;
+  width: 30px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.row .paddles .paddle svg {
+  color: white;
+}
+
+.row .paddles .left-paddle {
+  top: 50%;
+  left: 0;
+}
+
+.row .paddles .left-paddle.hidden {
+  display: none;
+}
+
+.row .paddles .right-paddle {
+  top: 50%;
+  right: 0;
 }
 
 .login {
