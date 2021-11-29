@@ -22,9 +22,9 @@ const Rows: React.FC<RowsChild> = (props) => {
         rowRef.current.addEventListener('scroll', scrollHandler)
         
         return ()=>{
-            rowRef.current.removeEventListener('scroll', scrollHandler)
+            rowRef.current?.removeEventListener('scroll', scrollHandler)
         }
-    },[])
+    },[rowRef])
 
     const scrollHandler = (e) => {
         if (e.target?.scrollLeft>0){

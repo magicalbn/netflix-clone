@@ -192,7 +192,7 @@ html {
 
 .Navbar .Content .right .arrow:focus + .drop_menu {
   opacity: 1;
-  pointer-events: all;
+  visibility: visible;
 }
 
 .Navbar .Content .right svg {
@@ -202,10 +202,10 @@ html {
 }
 
 .Navbar .Content .right .drop_menu {
-  -webkit-transition: opacity 0.2s ease-in-out;
-  transition: opacity 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
   background-color: rgba(0, 0, 0, 0.836);
   position: absolute;
   top: 8vh;
@@ -270,30 +270,6 @@ html {
   height: 30px;
   border-radius: 3px;
   margin-right: 15px;
-}
-
-@-webkit-keyframes delay-pointer-events {
-  0% {
-    pointer-events: all;
-  }
-  50% {
-    pointer-events: all;
-  }
-  100% {
-    pointer-events: none;
-  }
-}
-
-@keyframes delay-pointer-events {
-  0% {
-    pointer-events: all;
-  }
-  50% {
-    pointer-events: all;
-  }
-  100% {
-    pointer-events: none;
-  }
 }
 
 @media screen and (max-width: 750px) {
@@ -557,6 +533,10 @@ html {
   padding: 20px;
 }
 
+.row .row_posters:hover:hover .paddles {
+  opacity: 1;
+}
+
 .row .row_posters::-webkit-scrollbar {
   display: none;
 }
@@ -617,10 +597,6 @@ html {
   transition: opacity 0.3s ease-in-out;
 }
 
-.row .paddles:hover {
-  opacity: 1;
-}
-
 .row .paddles .paddle {
   margin-top: 15px;
   position: absolute;
@@ -646,7 +622,10 @@ html {
 }
 
 .row .paddles .left-paddle.hidden {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .row .paddles .right-paddle {
