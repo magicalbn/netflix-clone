@@ -50,7 +50,7 @@ const Navbar: React.FC<AppProps> = (props) => {
 
                     <img className="avatar" src='/avatar/Netflix-avatar-1.png'></img>
                     <div className="accounts_hover">
-                        <IoMdArrowDropdown className="arrow" />
+                        <button className="arrow"><IoMdArrowDropdown  /></button>
                         <AccountsMenu userlogout={logout} />
                     </div>
 

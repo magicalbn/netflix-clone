@@ -160,36 +160,52 @@ html {
   margin-right: 10px;
 }
 
-.Navbar .Content .right .accounts_hover:hover {
-  cursor: pointer;
-}
-
-.Navbar .Content .right .accounts_hover:hover .arrow {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
-.Navbar .Content .right .accounts_hover:hover .drop_menu {
-  opacity: 1;
-  pointer-events: all;
-}
-
 .Navbar .Content .right .arrow {
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
   height: 20px;
   width: 20px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.Navbar .Content .right .arrow:hover {
+  opacity: 1;
+}
+
+.Navbar .Content .right .arrow:focus {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.Navbar .Content .right .arrow:focus + .drop_menu {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .Navbar .Content .right svg {
   fill: white;
+  height: 50px;
+  width: 50px;
 }
 
 .Navbar .Content .right .drop_menu {
   -webkit-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
   opacity: 0;
-  pointer-events: all;
+  pointer-events: none;
   background-color: rgba(0, 0, 0, 0.836);
   position: absolute;
   top: 8vh;
