@@ -39,7 +39,7 @@ const Navbar: React.FC<AppProps> = (props) => {
             
             <div className="Content container">
                 <div className="left">
-                    <img className="logo" src={'https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png'} />
+                    <img className="logo" src='/NavLogo.png' />
                     <Menu />
                 </div>
                 <div className="right">
