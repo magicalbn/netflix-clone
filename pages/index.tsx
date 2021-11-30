@@ -10,6 +10,7 @@ import { UserActionList, ReducerStoreState, } from '@/store/actions'
 
 import Panel from "@/components/Rows/Panel"
 import FAQ from '@/components/FAQ'
+import Spinner from "@/components/UI/Spinner"
 interface AppProps {
     initializeAuth: (email: string, password: string, login: boolean) => {},
 
@@ -19,7 +20,7 @@ interface AppProps {
 
 const Home: React.FC<AppProps> = (props) => {
 
-
+    const {AuthData,initializeAuth} = props
     const [model, setmodel] = useState(false)
     const [email, setEmail] = useState<string>('')
     const [password, setpassword] = useState<string>('')
@@ -31,12 +32,12 @@ const Home: React.FC<AppProps> = (props) => {
 
     const LogingHandler = (e) => {
         e.preventDefault()
-        props.initializeAuth(email, password, true)
+        initializeAuth(email, password, true)
     }
 
     const SignUp = () => {
 
-        props.initializeAuth(email, password, false)
+        initializeAuth(email, password, false)
     }
 
 
@@ -79,8 +80,9 @@ const Home: React.FC<AppProps> = (props) => {
                 <form onSubmit={LogingHandler}>
                     <input className='email' type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                     <input className='password' type='password' placeholder='Password' value={password} onChange={(e) => setpassword(e.target.value)} />
-                    {props.AuthData.error ? <p className="error">{ErrorCodes[props.AuthData.error.code]}</p> : null}
-                    <button type='submit'>Sing In</button>
+                    {AuthData.error ? <p className="error">{ErrorCodes[AuthData.error.code]}</p> : null}
+                    <button className={AuthData.loading?'disable':''} type='submit'>{AuthData.loading?<Spinner/>:'Sing In'}</button>
+                    
                     <div className="lower">
                         <div className='checkbox'>
                             <input type="checkbox" name="remember" value="remember" />
@@ -90,7 +92,7 @@ const Home: React.FC<AppProps> = (props) => {
                     </div>
 
                 </form>
-                <p className="new">New to Netflix? <span onClick={() => SignUp()}>Sign up now</span></p>
+                <p className="new">New to Netflix? <span className={AuthData.loading?'disable':''} onClick={() => SignUp()}>Sign up now</span></p>
 
 
 
@@ -100,6 +102,7 @@ const Home: React.FC<AppProps> = (props) => {
     )
     return (
         <Layout title="Netflix India" home>
+            
             <div className='login'>
 
                 <img className='background' src='https://assets.nflxext.com/ffe/siteui/vlv3/5dd45df7-33f1-4274-97ea-e9c6aca69dad/ed1cb962-411d-4e43-bad2-33f07ae8e341/IN-en-20211108-popsignuptwoweeks-perspective_alpha_website_medium.jpg'></img>

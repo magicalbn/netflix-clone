@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react"
 import axios from '@/axios/MovieApi'
 import { request, imageURL } from '@/axios/NetflixRequets'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
+import PosterDetails from "./PosterDetails"
 interface RowsChild {
     requestURL: string,
     title: string,
@@ -14,47 +15,47 @@ interface RowsChild {
 
 const Rows: React.FC<RowsChild> = (props) => {
     const [moviesList, setmoviesList] = useState<any>()
-    const [leftPaddle,setleftPaddle] = useState<boolean>(false)
-    const rowRef:any = useRef()
+    const [leftPaddle, setleftPaddle] = useState<boolean>(false)
+    const rowRef: any = useRef()
 
 
     useEffect(() => {
         rowRef.current.addEventListener('scroll', scrollHandler)
-        
-        return ()=>{
+
+        return () => {
             rowRef.current?.removeEventListener('scroll', scrollHandler)
         }
-    },[rowRef])
+    }, [rowRef])
 
     const scrollHandler = (e) => {
-        if (e.target?.scrollLeft>0){
-            
+        if (e.target?.scrollLeft > 0) {
+
             setleftPaddle(true)
         }
         else {
-           
+
             setleftPaddle(false)
         }
-       
+
     }
 
-    const scrollOnClick = (left) =>{
-        if(left){
-            rowRef.current.scrollLeft=rowRef.current.scrollLeft - (window.innerWidth*0.8)
-            
-             
-        }else{
-            rowRef.current.scrollLeft=rowRef.current.scrollLeft + (window.innerWidth*0.8)
-            
+    const scrollOnClick = (left) => {
+        if (left) {
+            rowRef.current.scrollLeft = rowRef.current.scrollLeft - (window.innerWidth * 0.8)
+
+
+        } else {
+            rowRef.current.scrollLeft = rowRef.current.scrollLeft + (window.innerWidth * 0.8)
+
         }
     }
 
-    
+
 
     const paddles = (
         <div className="paddles">
-            <button onClick={()=>scrollOnClick(true)}className={`left-paddle paddle ${leftPaddle?'':'hidden'}`}><IoIosArrowBack /></button>
-            <button onClick={()=>scrollOnClick(false)} className="right-paddle paddle"><IoIosArrowForward /></button>
+            <button onClick={() => scrollOnClick(true)} className={`left-paddle paddle ${leftPaddle ? '' : 'hidden'}`}><IoIosArrowBack /></button>
+            <button onClick={() => scrollOnClick(false)} className="right-paddle paddle"><IoIosArrowForward /></button>
         </div>
     )
 
@@ -86,14 +87,20 @@ const Rows: React.FC<RowsChild> = (props) => {
                     </div>
 
                 ) : (
-                    <div className={`row_posters ${props.large ? 'poster' : ''}` } ref={rowRef}>
+                    <div className={`row_posters ${props.large ? 'poster' : ''}`} ref={rowRef}>
 
                         {
                             moviesList?.map(each => {
 
 
                                 return (
-                                    (each.poster_path && each.backdrop_path) ? <img key={each.id} src={imageURL + (props.large ? each.poster_path : each.backdrop_path)}></img> : null
+                                    (
+                                        each.poster_path && each.backdrop_path) ?
+                                        <div key={each.id} className='poster_item'>
+                                            <img  src={imageURL + (props.large ? each.poster_path : each.backdrop_path)}></img>
+                                            {!props.large ? <PosterDetails title={each.title} genres={each.genre_ids}/> : null}
+                                        </div> : null
+
                                 )
                             })
                         }

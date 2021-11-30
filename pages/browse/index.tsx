@@ -11,19 +11,24 @@ import { UserActionList, ReducerStoreState, } from '@/store/actions'
 
 import Layout from '@/components/Layout'
 import Rows from '@/components/Rows/Rows'
+import Player from '@/components/Player/Player'
 
 const Browse: React.FC = (props: any) => {
     const [bannerData, setbannerData] = useState<any>(props.banner)
+    const [showPlayer, setShowPlayer] = useState<boolean>(false)
 
     const truncate = (str, n) => {
         return (str.length > n) ? str.substr(0, n - 1) + '...' : str;
     };
 
-   
+    const showPlayerHandler = () => {
+        setShowPlayer(!showPlayer)
+    }
 
-    return (
+    return (<>
+        {showPlayer ? <Player backdrop={showPlayerHandler} /> : null}
         <Layout title="Home - Netflix">
-           
+
             <div className="browse">
                 {bannerData ? (
                     <div className="banner">
@@ -42,19 +47,23 @@ const Browse: React.FC = (props: any) => {
                     : null
                 }
                 <div className="content">
-                    <Rows large title="Netflix Orignals" requestURL={request.fetchNetflixOrignals} />
-                    <Rows large number title="Trending Now" requestURL={request.fetchTrending} />
-                    <Rows title="Top Rated" requestURL={request.fetchTopRated} />
-                    <Rows title="Documentaries" requestURL={request.fetchDocumentaries} />
-                    <Rows title="Horror" requestURL={request.fetchHorrorMovies} />
+                    <Rows key={1} large title="Orignals" requestURL={request.fetchNetflixOrignals} />
+                    <Rows key={2} large number title="Trending Now" requestURL={request.fetchTrending} />
+                    <Rows key={3} title="Top Rated" requestURL={request.fetchTopRated} />
+                    <Rows key={4} title="Romance" requestURL={request.fetchRomanceMovies} />
+                    <Rows key={5} title="Action" requestURL={request.fecthActionMovies} />
+                    <Rows key={6} title="Documentaries" requestURL={request.fetchDocumentaries} />
+                    <Rows key={7} title="Horror" requestURL={request.fetchHorrorMovies} />
                     {// <Rows title="Comedy" requestURL={request.fetchComedyMovies} />
                     }
-                    <Rows title="Romance" requestURL={request.fetchRomanceMovies} />
-                    <Rows title="Action" requestURL={request.fecthActionMovies} />
+                    
                 </div>
 
             </div>
+
+           
         </Layout>
+    </>
     )
 }
 
@@ -76,7 +85,7 @@ const mapStatetoProps = (state: ReducerStoreState) => {
 
 const mapDispacthtoProps = (dispatch: any) => {
     return {
-      
+
         logoutUser: () => dispatch(UserActionList.userLogOut()),
     }
 }
