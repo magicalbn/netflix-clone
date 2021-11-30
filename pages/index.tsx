@@ -81,7 +81,7 @@ const Home: React.FC<AppProps> = (props) => {
                     <input className='email' type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                     <input className='password' type='password' placeholder='Password' value={password} onChange={(e) => setpassword(e.target.value)} />
                     {AuthData.error ? <p className="error">{ErrorCodes[AuthData.error.code]}</p> : null}
-                    <button className={AuthData.loading?'disable':''} type='submit'>{AuthData.loading?<Spinner/>:'Sing In'}</button>
+                    <button className={AuthData.loading?'disable':''} type='submit'>{AuthData.loading?<Spinner/>:'Sign In'}</button>
                     
                     <div className="lower">
                         <div className='checkbox'>
