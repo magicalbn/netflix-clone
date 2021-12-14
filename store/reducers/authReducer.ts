@@ -21,7 +21,7 @@ const authsuccess = (state , action:AuthSuccess) => {
         ...state,
         error: null,
         user: action.user,
-        loading: false,
+        
     }
 }
 
