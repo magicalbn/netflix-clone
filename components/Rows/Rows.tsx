@@ -69,15 +69,15 @@ const Rows: React.FC<RowsChild> = (props) => {
             <h2>{props.title} <IoIosArrowForward /></h2>
             {
                 (props.large && props.number) ? (
-                    <div className={"row_posters poster"} ref={rowRef}>
+                    <div className={"row_posters poster "} ref={rowRef}>
                         {
                             moviesList?.map((each, index) => {
 
 
                                 return (
-                                    <div className="card" key={each.id}>
+                                    <div className="card " key={each.id}>
                                         <p>{index + 1}</p>
-                                        <img key={each.id} src={imageURL + each.poster_path}></img>
+                                        <img className="skel" key={each.id} src={imageURL + each.poster_path}></img>
                                     </div>
                                 )
                             })
@@ -87,7 +87,7 @@ const Rows: React.FC<RowsChild> = (props) => {
                     </div>
 
                 ) : (
-                    <div className={`row_posters ${props.large ? 'poster' : ''}`} ref={rowRef}>
+                    <div className={`row_posters  ${props.large ? 'poster' : ''}`} ref={rowRef}>
 
                         {
                             moviesList?.map(each => {
@@ -96,8 +96,8 @@ const Rows: React.FC<RowsChild> = (props) => {
                                 return (
                                     (
                                         each.poster_path && each.backdrop_path) ?
-                                        <div key={each.id} className='poster_item'>
-                                            <img  src={imageURL + (props.large ? each.poster_path : each.backdrop_path)}></img>
+                                        <div key={each.id} className='poster_item '>
+                                            <img  className="skel" src={imageURL + (props.large ? each.poster_path : each.backdrop_path)}></img>
                                             {!props.large ? <PosterDetails title={each.title} genres={each.genre_ids}/> : null}
                                         </div> : null
 
