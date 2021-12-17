@@ -35,20 +35,22 @@ const Browse: React.FC = (props: any) => {
                 {bannerData ? (
                     <div className="banner">
                         <OnImagesLoaded
-                            onLoaded={()=>setshowSkeleton(false)}
-                            
-                        >
-                        <img src={imageURL + bannerData.backdrop_path} alt="banner" ></img>
-                        </OnImagesLoaded>
-                        <div className="information">
-                            <h1>{bannerData.name}</h1>
-                            <h3>{truncate(bannerData.overview, 100)}</h3>
-                            <div className="btn_grp">
-                                <button className="play"><BsFillPlayFill /> Play</button>
-                                <button className="more"><IoMdInformationCircleOutline />More Info</button>
+                            onLoaded={() => setshowSkeleton(false)}
 
+                        >
+                            <img src={imageURL + bannerData.backdrop_path} alt="banner" ></img>
+                        </OnImagesLoaded>
+                        {
+                           !showSkeleton && <div className="information">
+                                <h1>{bannerData.name}</h1>
+                                <h3>{truncate(bannerData.overview, 100)}</h3>
+                                <div className="btn_grp">
+                                    <button className="play"><BsFillPlayFill /> Play</button>
+                                    <button className="more"><IoMdInformationCircleOutline />More Info</button>
+
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 )
                     : null
