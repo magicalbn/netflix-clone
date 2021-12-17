@@ -593,18 +593,24 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
 .row .row_posters.poster .card p {
   pointer-events: none;
-  font-size: 200px;
+  font-size: 226px;
   color: black;
   font-weight: bold;
-  margin-right: -40px;
+  margin-right: -12px;
   /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 4px;
   -webkit-text-stroke-color: #5a5959;
+  letter-spacing: -30px;
+  line-height: 0px;
+}
+
+.row .row_posters.poster .card:nth-child(10) p {
+  margin-right: -40px;
 }
 
 .row .row_posters.poster .card img {
@@ -1395,6 +1401,83 @@ html {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+.row_loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 50px;
+  overflow-x: scroll;
+  padding-top: 100px;
+  padding-left: 20px;
+  height: 100vh;
+}
+
+.row_loader div {
+  -webkit-animation: backgroundTransition 2s ease-in-out infinite;
+          animation: backgroundTransition 2s ease-in-out infinite;
+  width: 230px;
+  height: 130px;
+  margin: 5px 5px;
+  border-radius: 2px;
+}
+
+.row_loader div:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.row_loader div:nth-child(3) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.row_loader div:nth-child(4) {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+.row_loader div:nth-child(5) {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@-webkit-keyframes backgroundTransition {
+  0% {
+    background-color: #292828;
+  }
+  35% {
+    background-color: #8b8b8b;
+  }
+  70% {
+    background-color: #292828;
+  }
+  100% {
+    background-color: #292828;
+  }
+}
+
+@keyframes backgroundTransition {
+  0% {
+    background-color: #292828;
+  }
+  35% {
+    background-color: #8b8b8b;
+  }
+  70% {
+    background-color: #292828;
+  }
+  100% {
+    background-color: #292828;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .row_loader div {
+    min-width: 130px;
+    min-height: 200px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

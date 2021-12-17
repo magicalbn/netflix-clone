@@ -3,7 +3,7 @@ import { request, imageURL } from '@/axios/NetflixRequets'
 import React, { useEffect, useState } from 'react'
 import { BsFillPlayFill } from 'react-icons/bs'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
-
+import OnImagesLoaded from 'react-on-images-loaded';
 
 //redux
 import { connect } from 'react-redux'
@@ -12,9 +12,11 @@ import { UserActionList, ReducerStoreState, } from '@/store/actions'
 import Layout from '@/components/Layout'
 import Rows from '@/components/Rows/Rows'
 import Player from '@/components/Player/Player'
+import RowsSkeleton from '@/components/UI/RowsSkeleton'
 
 const Browse: React.FC = (props: any) => {
     const [bannerData, setbannerData] = useState<any>(props.banner)
+    const [showSkeleton, setshowSkeleton] = useState(true)
     const [showPlayer, setShowPlayer] = useState<boolean>(false)
 
     const truncate = (str, n) => {
@@ -32,7 +34,12 @@ const Browse: React.FC = (props: any) => {
             <div className="browse">
                 {bannerData ? (
                     <div className="banner">
-                        <img src={imageURL + bannerData.backdrop_path} alt="banner"></img>
+                        <OnImagesLoaded
+                            onLoaded={()=>setshowSkeleton(false)}
+                            
+                        >
+                        <img src={imageURL + bannerData.backdrop_path} alt="banner" ></img>
+                        </OnImagesLoaded>
                         <div className="information">
                             <h1>{bannerData.name}</h1>
                             <h3>{truncate(bannerData.overview, 100)}</h3>
@@ -46,22 +53,29 @@ const Browse: React.FC = (props: any) => {
                 )
                     : null
                 }
-                <div className="content">
-                    <Rows key={1} large title="Orignals" requestURL={request.fetchNetflixOrignals} />
-                    <Rows key={2} large number title="Trending Now" requestURL={request.fetchTrending} />
-                    <Rows key={3} title="Top Rated" requestURL={request.fetchTopRated} />
-                    <Rows key={4} title="Romance" requestURL={request.fetchRomanceMovies} />
-                    <Rows key={5} title="Action" requestURL={request.fecthActionMovies} />
-                    <Rows key={6} title="Documentaries" requestURL={request.fetchDocumentaries} />
-                    <Rows key={7} title="Horror" requestURL={request.fetchHorrorMovies} />
-                    {// <Rows title="Comedy" requestURL={request.fetchComedyMovies} />
-                    }
-                    
-                </div>
+
+                {showSkeleton ?
+                    <RowsSkeleton /> :
+                    (
+                        <div className="content">
+                            <Rows key={1} large title="Orignals" requestURL={request.fetchNetflixOrignals} />
+                            <Rows key={2} large number title="Trending Now" requestURL={request.fetchTrending} />
+                            <Rows key={3} title="Top Rated" requestURL={request.fetchTopRated} />
+                            <Rows key={4} title="Romance" requestURL={request.fetchRomanceMovies} />
+                            <Rows key={5} title="Action" requestURL={request.fecthActionMovies} />
+                            <Rows key={6} title="Documentaries" requestURL={request.fetchDocumentaries} />
+                            <Rows key={7} title="Horror" requestURL={request.fetchHorrorMovies} />
+                            {// <Rows title="Comedy" requestURL={request.fetchComedyMovies} />
+                            }
+
+                        </div>
+                    )
+                }
+
 
             </div>
 
-           
+
         </Layout>
     </>
     )
