@@ -928,6 +928,8 @@ html {
 
 .login .login-model {
   position: absolute;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
   z-index: 50;
   left: 50%;
   top: 50%;
@@ -993,6 +995,10 @@ html {
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.login .login-model form button.demo-login {
+  margin-top: 15px;
 }
 
 .login .login-model form .lower {

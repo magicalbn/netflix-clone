@@ -11,6 +11,7 @@ import { UserActionList, ReducerStoreState, } from '@/store/actions'
 import Panel from "@/components/Rows/Panel"
 import FAQ from '@/components/FAQ'
 import Spinner from "@/components/UI/Spinner"
+import Fade from 'react-reveal/Fade';
 interface AppProps {
     initializeAuth: (email: string, password: string, login: boolean) => {},
 
@@ -35,8 +36,12 @@ const Home: React.FC<AppProps> = (props) => {
         initializeAuth(email, password, true)
     }
 
-    const SignUp = () => {
+    const demoLogin = () => {
+        console.log("demo")
+        initializeAuth("sample@sam.com","sample@123", true)
+    }
 
+    const SignUp = () => {       
         initializeAuth(email, password, false)
     }
 
@@ -74,7 +79,7 @@ const Home: React.FC<AppProps> = (props) => {
     const loginModel = (
         <>
             <div className="login-model">
-
+                <Fade>
                 <h1>Sign In<p onClick={() => setmodel(false)}>x</p></h1>
 
                 <form onSubmit={LogingHandler}>
@@ -82,7 +87,7 @@ const Home: React.FC<AppProps> = (props) => {
                     <input className='password' type='password' placeholder='Password' value={password} onChange={(e) => setpassword(e.target.value)} />
                     {AuthData.error ? <p className="error">{ErrorCodes[AuthData.error.code]}</p> : null}
                     <button className={AuthData.loading?'disable':''} type='submit'>{AuthData.loading?<Spinner/>:'Sign In'}</button>
-                    
+                    {!AuthData.loading && <button onClick={demoLogin} className="demo-login" >Demo login</button>}
                     <div className="lower">
                         <div className='checkbox'>
                             <input type="checkbox" name="remember" value="remember" />
@@ -93,7 +98,7 @@ const Home: React.FC<AppProps> = (props) => {
 
                 </form>
                 <p className="new">New to Netflix? <span className={AuthData.loading?'disable':''} onClick={() => SignUp()}>Sign up now</span></p>
-
+                </Fade>
 
 
             </div>
