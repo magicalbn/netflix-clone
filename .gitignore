@@ -2,3 +2,4 @@
 node_modules
 *.scss
 test.tsx
+.env.local
