@@ -492,11 +492,21 @@ html {
 }
 
 @media screen and (max-width: 570px) {
+  .browse .banner {
+    width: 100vw;
+    overflow: hidden;
+  }
+  .browse .banner img {
+    width: 150%;
+    background-position: center;
+    -webkit-transform: translateX(-25%);
+            transform: translateX(-25%);
+  }
   .browse .banner::after {
     height: 40px;
   }
   .browse .banner .information {
-    top: 40%;
+    top: 60%;
     left: 5%;
   }
   .browse .banner .information h1 {
@@ -575,6 +585,10 @@ html {
   display: block;
   max-height: 130px;
   border-radius: 2px;
+  height: 130px;
+  width: 231px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#1d1c1c), to(#4e4e4e));
+  background: linear-gradient(#1d1c1c, #4e4e4e);
 }
 
 .row .row_posters.poster {
@@ -584,6 +598,8 @@ html {
 
 .row .row_posters.poster img {
   max-height: 200px;
+  height: 180px;
+  width: 120px;
 }
 
 .row .row_posters.poster .card {
@@ -781,6 +797,15 @@ html {
   border-radius: 50%;
   left: 0;
   top: 40%;
+}
+
+@media screen and (max-width: 725px) {
+  .row h2 {
+    margin-left: 15px;
+  }
+  .row .row_posters {
+    padding-left: 10px;
+  }
 }
 
 .login {
