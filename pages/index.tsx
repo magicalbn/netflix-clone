@@ -153,7 +153,7 @@ const Home: React.FC<AppProps> = (props) => {
     return (
         <Layout title="Netflix India" home>
             <div className="login">
-                <img className="background" src="/website_large.jpg"></img>
+                <img className="background" src="/website2_large.jpg"></img>
                 <div className="head">
                     <img className="logo" src="/NavLogo.png"></img>
                     <button className="sign_in" onClick={(e) => setmodel(true)}>
